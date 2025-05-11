@@ -1,28 +1,116 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
-<title>My Website</title>
-</head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BestyMatch Quiz</title>
   <style>
-    body{
-      font-family: Arial, sans-serif;
-      margin:20px;
-      background-color: aqua;
-      background-size: cover;
-      background-repeat: non-repeat;
-      background-position: center;
-
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f0;
+      color: #333;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #e06c75;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .question p {
+      font-weight: bold;
+    }
+    .answers label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    #submit {
+      background-color: #61afef;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #result {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #d4edda;
+      color: #155724;
+      border-radius: 5px;
+      display: none;
     }
   </style>
-<nav>
-<a href="#">Home</a>
-<a href="c:\Users\Robin\Desktop\carlos\linked index 1.html">About</a>
-<a href="c:\Users\Robin\Desktop\carlos\linked index2.html">contacts</a>
-</nav>
-<div class="container">
-<h1>Welcome!</h1>
-<p>This is carlkims .</p>
-</div></style>
-</body>
+</head>
+<body>
+  <h1>BestyMatch Quiz</h1>
+  <form id="quiz">
+    <div class="question">
+      <p>1. What's your ideal weekend plan?</p>
+      <div class="answers">
+        <label><input type="radio" name="q1" value="A" /> Netflix and chill</label>
+        <label><input type="radio" name="q1" value="B" /> Hiking or nature</label>
+        <label><input type="radio" name="q1" value="C" /> Hanging out with someone special</label>
+      </div>
+    </div>
+    <div class="question">
+      <p>2. How do you like your guys?</p>
+      <div class="answers">
+        <label><input type="radio" name="q2" value="A" /> Tall, dark, and mysterious</label>
+        <label><input type="radio" name="q2" value="B" /> Funny, kind, and a little annoying</label>
+        <label><input type="radio" name="q2" value="C" /> Smart and confident</label>
+      </div>
+    </div>
+    <div class="question">
+      <p>3. What’s your love language?</p>
+      <div class="answers">
+        <label><input type="radio" name="q3" value="A" /> Words of affirmation</label>
+        <label><input type="radio" name="q3" value="B" /> Quality time</label>
+        <label><input type="radio" name="q3" value="C" /> Gifts</label>
+      </div>
+    </div>
+    <div class="question">
+      <p>4. Pick a superpower you'd love to have:</p>
+      <div class="answers">
+        <label><input type="radio" name="q4" value="A" /> Invisibility</label>
+        <label><input type="radio" name="q4" value="B" /> Reading minds</label>
+        <label><input type="radio" name="q4" value="C" /> Time travel (especially to a date with someone cute)</label>
+      </div>
+    </div>
+    <div class="question">
+      <p>5. What's your type of date?</p>
+      <div class="answers">
+        <label><input type="radio" name="q5" value="A" /> Candlelight dinner</label>
+        <label><input type="radio" name="q5" value="B" /> Spontaneous hangout with my besty</label>
+        <label><input type="radio" name="q5" value="C" /> Game night and jokes</label>
+      </div>
+    </div>
+    <button type="button" id="submit">See My Match</button>
+  </form>
+  <div id="result"></div>  <script>
+    document.getElementById("submit").onclick = function () {
+      const answers = ["q1", "q2", "q3", "q4", "q5"];
+      let completed = true;
+      for (let q of answers) {
+        if (!document.querySelector('input[name="' + q + '"]:checked')) {
+          completed = false;
+        }
+      }
+      if (!completed) {
+        alert("Please answer all the questions!");
+        return;
+      }
+
+      const result = document.getElementById("result");
+      result.style.display = "block";
+      result.innerHTML = `
+        <h2>Your Perfect Match is...</h2>
+        <p><strong>That annoying genius you call your besty (yeah, me!).</strong><br>
+        Looks like the algorithm agrees with what your heart already knew. So... coffee sometime?</p>
+      `;
+    };
+  </script></body>
 </html>
